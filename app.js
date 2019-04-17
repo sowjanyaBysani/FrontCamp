@@ -11,7 +11,6 @@ class News {
                 this.createNewsFragment(articleList);
             });
     }
-
     createNewsFragment(articleList) {
         var fragment = document.createDocumentFragment();
         for (let i = 0; i < articleList.articles.length; i++) {
