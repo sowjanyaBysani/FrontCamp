@@ -1,6 +1,9 @@
 class News {
     articleList;
-    constructor() { }
+    newsItemsList;
+    constructor() { 
+        this.newsItemsList = document.getElementById("NewsItemsList");
+    }
 
     getArticleList(channelName) {
         const apiName = `https://newsapi.org/v1/articles?source=${channelName}&apiKey=b93fd4308dbf445b8a8cdca1f1213172`;
@@ -12,10 +15,12 @@ class News {
             });
     }
     createNewsFragment(articleList) {
-        var fragment = document.createDocumentFragment();
+        const fragment = document.createDocumentFragment();
+        this.newsItemsList = articleList.map(getNewsItemsList);
+
         for (let i = 0; i < articleList.articles.length; i++) {
             var newsItem = document.createElement('section');
-            document.getElementById("NewsItemsList").innerHTML = "";
+            this.newsItemsList.innerHTML = "";
             newsItem.innerHTML = `
                 <img
                     src="${articleList.articles[i].urlToImage}">
@@ -27,12 +32,16 @@ class News {
             fragment.appendChild(newsItem);
 
         }
-        document.getElementById('NewsItemsList').appendChild(fragment);
+        this.newsItemsList.appendChild(fragment);
     }
 
+    getNewsItemsList(article){
+
+    }
 }
 
 const news = new News();
-
+// var nums = [1,2,3];
+// var doubleNums = nums.map((e) => e * 2);
 
 

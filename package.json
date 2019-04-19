@@ -1,0 +1,27 @@
+{
+  "name": "frontcamp",
+  "version": "1.0.0",
+  "description": "frontCamp Training",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sowjanyaBysani/FrontCamp.git"
+  },
+  "keywords": [
+    "es6"
+  ],
+  "author": "sowjanya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sowjanyaBysani/FrontCamp/issues"
+  },
+  "homepage": "https://github.com/sowjanyaBysani/FrontCamp#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1"
+  }
+}
