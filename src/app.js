@@ -1,11 +1,13 @@
 class News {
     articleList;
     newsItemsList;
-    constructor() { 
+    fragment;
+        constructor() { 
         this.newsItemsList = document.getElementById("NewsItemsList");
     }
 
     getArticleList(channelName) {
+        this.newsItemsList.innerHTML="";
         const apiName = `https://newsapi.org/v1/articles?source=${channelName}&apiKey=b93fd4308dbf445b8a8cdca1f1213172`;
 
         fetch(apiName)
@@ -15,33 +17,30 @@ class News {
             });
     }
     createNewsFragment(articleList) {
-        const fragment = document.createDocumentFragment();
-        this.newsItemsList = articleList.map(getNewsItemsList);
-
-        for (let i = 0; i < articleList.articles.length; i++) {
-            var newsItem = document.createElement('section');
-            this.newsItemsList.innerHTML = "";
-            newsItem.innerHTML = `
-                <img
-                    src="${articleList.articles[i].urlToImage}">
-                <h3 class="title">${articleList.articles[i].title}</h3>
-                <p class="description">${articleList.articles[i].description}</p>
-                <em class="foot">-${articleList.articles[i].author}</em>
-                `;
-            newsItem.classList.add('news-item');
-            fragment.appendChild(newsItem);
-
-        }
-        this.newsItemsList.appendChild(fragment);
+        this.fragment = document.createDocumentFragment();
+        let newsItems = articleList.articles.map(this.getNewsItemsList);
+        // this.fragment.appendChild(...newsItems);
+        newsItems.forEach(this.addNewsItem.bind(this));
     }
 
     getNewsItemsList(article){
+        var newsItem = document.createElement('section');
+        newsItem.innerHTML = `
+            <img
+                src="${article.urlToImage}">
+            <h3 class="title">${article.title}</h3>
+            <p class="description">${article.description}</p>
+            <em class="foot">-${article.author}</em>
+            `;
+        newsItem.classList.add('news-item');
+        return newsItem;
+    }
 
+    addNewsItem(newsItem){
+        this.newsItemsList.appendChild(newsItem);
     }
 }
 
 const news = new News();
-// var nums = [1,2,3];
-// var doubleNums = nums.map((e) => e * 2);
 
 
