@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <nav class="navigator">
+            <ul id="NewsChannelsList">
+                <li><a onclick="news.getArticleList('CNN')">CNN</a></li>
+                <li><a onclick="news.getArticleList('bbc-news')">BBC</a></li>
+
+            </ul>
+        </nav>
+        <main>
+            <article class="news-items-list" id="NewsItemsList">
+            </article>
+        </main>
+    </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>
